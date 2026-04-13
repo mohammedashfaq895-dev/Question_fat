@@ -1,0 +1,13 @@
+Design and develop a Restaurant Menu Web Page using HTML that presents a well-structured
+and visually organized menu for a restaurant. The webpage should include a clear title and
+header section displaying the restaurant name, and a short description or tagline. It must contain
+different sections such as Starters, Main Course, Desserts, and Beverages, with each section
+listing multiple items along with their names, descriptions, and prices. A footer section should
+be added with contact details such as address, phone number, or email. Maintain the source
+code of the webpage in a GitHub repository [10].
+• Clone the repository into VS Code, make any updates, commit and push the changes
+to the Git repository [10].
+• Containerize the application using Docker and prepare it for deployment [10].
+• Configure Jenkins to create a pipeline project that builds, tests, and deploys the
+application using Docker and Kubernetes, and visualize the deployment through
+Docker Desktop [20].
