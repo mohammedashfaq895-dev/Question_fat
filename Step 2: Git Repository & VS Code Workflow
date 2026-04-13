@@ -1,0 +1,15 @@
+Create a Repository: Go to GitHub and create a new repository (e.g., restaurant-menu-app).
+
+Clone to VS Code: Open the terminal in VS Code and run:
+
+Bash
+git clone https://github.com/yourusername/restaurant-menu-app.git
+cd restaurant-menu-app
+Add Files: Move your index.html file into this folder.
+
+Commit and Push:
+
+Bash
+git add .
+git commit -m "Initial commit: Added HTML menu"
+git push origin main
