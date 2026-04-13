@@ -1,0 +1,58 @@
+Ensure Jenkins has Docker and Kubernetes CLI (kubectl) installed and configured to communicate with your Docker Desktop Kubernetes cluster.
+
+Create a file named Jenkinsfile in the root of your repository:
+
+
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Pulls the latest code from your GitHub repository
+                checkout scm
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    echo 'Building Docker Image...'
+                    // Builds the image using the Dockerfile
+                    sh 'docker build -t restaurant-menu:latest .'
+                }
+            }
+        }
+
+        stage('Deploy to Kubernetes') {
+            steps {
+                script {
+                    echo 'Deploying to Kubernetes Cluster...'
+                    // Apply deployment and service
+                    sh 'kubectl apply -f k8s/deployment.yaml'
+                    sh 'kubectl apply -f k8s/service.yaml'
+                    
+                    // Restart the deployment to ensure the latest image is pulled
+                    sh 'kubectl rollout restart deployment restaurant-menu-deployment'
+                }
+            }
+        }
+    }
+}
+
+
+
+
+Final Deployment Steps:
+Commit the Jenkinsfile to GitHub.
+
+In Jenkins, create a new Pipeline project.
+
+Under the Pipeline section, select Pipeline script from SCM, choose Git, and input your repository URL.
+
+Set the script path to Jenkinsfile.
+
+Run the build.
+
+Visualizing in Docker Desktop:
+Once Jenkins finishes executing the pipeline successfully, open Docker Desktop. If you have the Kubernetes extension enabled, you can navigate to the Kubernetes tab to see your restaurant-menu-deployment pods running. You can view the live site by opening your browser and navigating to http://localhost:30080.
